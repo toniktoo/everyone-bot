@@ -1,8 +1,0 @@
-{
-    "telegramApiKey": "1508652969:AAFNoL2FlaUpihwVZqImY4VP5VsD4N2RC7g",
-    "botUsername": "at_awesome_bot",
-    "firebaseProjectName": "everyone-tg-bot",
-    "firebaseDatabaseSecret": "dKb7LRUsWPp1weLAARLHligqGpafCtsN5D4e4PqF",
-    "mentionsPerMessage": 5,
-    "enableRemoveInactiveMembersCommand": false
-}
