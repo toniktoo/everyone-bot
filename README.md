@@ -1,6 +1,6 @@
-> Review slap bot
+## Review slap bot
 > This is fork from [EveryOneBot](https://github.com/everyone-bot/everyone-bot) with some new features:
-- text to random user
+- text to random user from list
 - connect this text with user and save data
 - clear this connection by users
 - check all connections
