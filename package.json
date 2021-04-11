@@ -8,7 +8,8 @@
     "test:watch": "yarn test --watch",
     "start": "ts-node .",
     "start:dev": "nodemon -x ts-node . -e ts,json",
-    "dev": "npm-run-all --parallel start:dev test:watch"
+    "dev": "npm-run-all --parallel start:dev test:watch",
+    "heroku-postbuild": "npm run start"
   },
   "engines": {
     "node": ">=14.0.0"
