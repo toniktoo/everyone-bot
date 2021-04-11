@@ -1,16 +1,15 @@
-<h1 align="center">
-    <img src="everyone-bot-logo.png" alt="Everyone bot logo" width="200">
-    <br>
-    Everyone Bot
-</h1>
-
-> Telegram bot to get everyone's attention in a group chat. Like `@everyone` in other messaging applications.
+> Review slap bot
+> This is fork from [EveryOneBot](https://github.com/everyone-bot/everyone-bot) with some new features:
+- text to random user
+- connect this text with user and save data
+- clear this connection by users
+- check all connections
 
 ## Use
 
 Use the hosted bot, or host your own!
 
-[Add to your group](https://telegram.me/everyonethebot)
+[Add to your group](https://telegram.me/at_awesome_bot)
 
 Commands:
 
@@ -20,6 +19,13 @@ Commands:
 /out - Opt-out of receiving mentions
 /everyone - Mention all opted-in users
 /clean - Admin-only command to clean up inactive users
+
+// new features commands
+
+/review - set review to random user from /in list
+/end_review - clear user connection with review
+/check - check user connections
+/check_all - check all users connections
 ```
 
 ## Installation
