@@ -9,7 +9,7 @@
     "start": "ts-node .",
     "start:dev": "nodemon -x ts-node . -e ts,json",
     "dev": "npm-run-all --parallel start:dev test:watch",
-    "heroku-postbuild": "npm run start"
+    "heroku-postbuild": "NODE_ENV=prod npm run start"
   },
   "engines": {
     "node": ">=14.0.0"

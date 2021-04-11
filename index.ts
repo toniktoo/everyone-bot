@@ -12,16 +12,16 @@ import OnboardingController from './controllers/onboardingController'
 import EveryoneController from './controllers/everyoneController';
 import UserListController from "./controllers/userListController";
 
-const config = !process.env.PRODUCTION && require('./config.json')
-const settings = new SettingsRepository(config)
+const config = process.env.NODE_ENV !== 'prod' && require('./config.json');
+const settings = new SettingsRepository(config);
 
-const mentionBuilder = new MentionBuilder(settings)
+const mentionBuilder = new MentionBuilder(settings);
 const firebaseSettings = new FirebaseSettings(
     settings.firebaseProjectName,
     settings.firebaseDatabaseSecret,
 );
-const groupRepository = new GroupRepository(firebaseSettings)
-const statisticsRepository = new StatisticsRepository(firebaseSettings)
+const groupRepository = new GroupRepository(firebaseSettings);
+const statisticsRepository = new StatisticsRepository(firebaseSettings);
 
 const bot = new Telegraf(settings.telegramApiKey, {
     username: settings.botUsername,
