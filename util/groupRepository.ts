@@ -34,17 +34,17 @@ export default class GroupRepository {
             return new Group(groupId, []);
         }
 
-        const users: User[] = []
+        const users: User[] = [];
 
         Object.keys(group.members).forEach(userId => {
-            const user = group.members[userId]
+            const user = group.members[userId];
 
             if(!user.optIn) {
                 return
             }
 
-            users.push(new User(user.id, user.username))
-        })
+            users.push(new User(user.id, user.username, user.status, user.optIn, user.reviewLink))
+        });
 
         return new Group(groupId, users)
     }
@@ -57,20 +57,10 @@ export default class GroupRepository {
      * @return {Promise<Void>}
      */
     async optIn(user: User, groupId: number): Promise<void> {
-        if (!user) throw new SyntaxError('No user provided to optIn')
-        if (!groupId) throw new SyntaxError('No groupId provided to optIn')
+        if (!user) throw new SyntaxError('No user provided to optIn');
+        if (!groupId) throw new SyntaxError('No groupId provided to optIn');
 
-        const path = this.firebaseSettings.buildPath(`groups/${groupId}/members/${user.id}.json`)
-
-        const payload = JSON.stringify({
-            id: user.id,
-            username: user.username,
-            optIn: true
-        });
-
-        await got.patch(path, {
-            body: payload
-        })
+        this.userUpdate(user, groupId, 'optIn', true);
     }
 
     /**
@@ -81,19 +71,22 @@ export default class GroupRepository {
      * @return {Promise<Void>}
      */
     async optOut(user: User, groupId: number): Promise<void> {
-        if (!user) throw new SyntaxError('No user provided to optOut')
-        if (!groupId) throw new SyntaxError('No groupId provided to optOut')
+        if (!user) throw new SyntaxError('No user provided to optOut');
+        if (!groupId) throw new SyntaxError('No groupId provided to optOut');
 
-        const path = this.firebaseSettings.buildPath(`groups/${groupId}/members/${user.id}.json`)
+        this.userUpdate(user, groupId, 'optIn', false);
+    }
+
+    userUpdate = async (user: User, groupId: number, paramName: string, value: string|number|boolean) => {
+        const path = this.firebaseSettings.buildPath(`groups/${groupId}/members/${user.id}.json`);
 
         const payload = JSON.stringify({
-            id: user.id,
-            username: user.username,
-            optIn: false
+            ...user.params,
+            [paramName]: value
         });
 
         await got.patch(path, {
             body: payload
-        })
+        });
     }
 }

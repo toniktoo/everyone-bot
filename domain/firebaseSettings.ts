@@ -16,7 +16,7 @@ export default class FirebaseSettings {
     }
 
     /**
-     * @param  {String} resoruce - Path in the firebase object being retrieved.
+     * @param  {String} resource - Path in the firebase object being retrieved.
      * @param  {String} queryParams - Optional firebase query params for filtering, sorting, etc.
      * @return {String}
      */
@@ -25,6 +25,6 @@ export default class FirebaseSettings {
             throw new SyntaxError('No resource specified when building firebase path')
         }
 
-        return `https://${this.projectName}.firebaseio.com/${resource}?auth=${this.databaseSecret}`;
+        return `https://${this.projectName}-default-rtdb.europe-west1.firebasedatabase.app/${resource}?auth=${this.databaseSecret}`;
     }
 }

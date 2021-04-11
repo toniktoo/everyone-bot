@@ -16,11 +16,11 @@ describe('GroupRepository tests', () => {
 
         got.mockReset()
         got.patch.mockReset()
-    })
+    });
 
     afterAll(() => {
         jest.dontMock('got')
-    })
+    });
 
     it('should be able to get a group and build it', async () => {
         const groupId = -999
@@ -63,7 +63,10 @@ describe('GroupRepository tests', () => {
             body: JSON.stringify({
                 id: user.id,
                 username: user.username,
-                optIn: true
+                optIn: true,
+                status: 'active',
+                reviewDateTime: '',
+                reviewLink: ''
             })
         })
     })
@@ -107,7 +110,10 @@ describe('GroupRepository tests', () => {
             body: JSON.stringify({
                 id: user.id,
                 username: user.username,
-                optIn: false
+                optIn: false,
+                status: 'active',
+                reviewDateTime: '',
+                reviewLink: ''
             })
         })
     })
