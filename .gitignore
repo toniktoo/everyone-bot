@@ -1,5 +1,4 @@
 node_modules/
-config.json
 npm-debug.*
 firebase-admin-sdk-secret-key.json
 .idea
